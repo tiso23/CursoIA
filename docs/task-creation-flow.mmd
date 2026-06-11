@@ -1,0 +1,45 @@
+flowchart TD
+    A([Entrada a la app]) --> B[TaskPage / Layout principal]
+    B --> C[TaskSummary: pendientes y completadas]
+    B --> D[TaskList: tareas ordenadas por ICE]
+    D --> E{Usuario quiere crear tarea}
+    E -->|Pulsa FAB Crear| F[TaskForm en modo creacion]
+    E -->|No crea tarea| D
+
+    F --> G[Introduce titulo obligatorio]
+    G --> H[Introduce descripcion opcional]
+    H --> I[Revisa valores ICE por defecto]
+    I --> J{Solicita sugerencia IA}
+
+    J -->|Si| K[LoadingButton: Sugerir ICE]
+    K --> L[TaskApi: suggestIceScore]
+    L --> M{Respuesta valida}
+    M -->|Si| N[AiSuggestionPanel: muestra impacto, confianza, facilidad y razon]
+    M -->|No| O[ErrorMessage: error simple]
+    O --> P[Usuario continua con calculo manual]
+
+    J -->|No| P
+    N --> Q{Usuario acepta sugerencia}
+    Q -->|Si| R[TaskForm actualiza campos ICE]
+    Q -->|Edita manualmente| P
+    P --> R
+
+    R --> S{Formulario valido}
+    S -->|No| T[Validacion inline en campos]
+    T --> G
+    S -->|Si| U[Confirmar tarea]
+    U --> V[Crear Task en estado local]
+    V --> W[Calcular ICE total]
+    W --> X[TaskList se reordena por ICE descendente]
+    X --> Y[TaskConfirmationSummary]
+    Y --> D
+
+    classDef screen fill:#E8F0FE,stroke:#1A73E8,color:#174EA6;
+    classDef component fill:#E6F4EA,stroke:#34A853,color:#0D652D;
+    classDef decision fill:#FFF8E1,stroke:#F9AB00,color:#7A4F00;
+    classDef error fill:#FCE8E6,stroke:#D93025,color:#A50E0E;
+
+    class A,B,Y screen;
+    class C,D,F,K,N,R,V,W,X component;
+    class E,J,M,Q,S decision;
+    class O,T error;

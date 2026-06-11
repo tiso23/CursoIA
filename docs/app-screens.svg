@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="980" viewBox="0 0 1440 980" role="img" aria-labelledby="title desc">
+  <title id="title">Pantallas principales del Gestor de Tareas ICE</title>
+  <desc id="desc">Wireframe visual basado en Material UI para layout principal, listado, formulario, panel IA y resumen de tarea confirmada.</desc>
+
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#1f2937" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .surface { fill: #ffffff; stroke: #d8dee8; stroke-width: 1; }
+      .appbar { fill: #1565c0; }
+      .primary { fill: #1976d2; }
+      .primaryText { fill: #ffffff; font: 600 16px Arial, sans-serif; }
+      .title { fill: #1f2937; font: 700 22px Arial, sans-serif; }
+      .h2 { fill: #1f2937; font: 700 17px Arial, sans-serif; }
+      .label { fill: #5f6368; font: 500 12px Arial, sans-serif; }
+      .body { fill: #374151; font: 400 13px Arial, sans-serif; }
+      .small { fill: #6b7280; font: 400 11px Arial, sans-serif; }
+      .chip { fill: #e8f0fe; stroke: #b8cff8; stroke-width: 1; }
+      .successChip { fill: #e6f4ea; stroke: #b7dfc2; stroke-width: 1; }
+      .warnChip { fill: #fff8e1; stroke: #ffe082; stroke-width: 1; }
+      .field { fill: #ffffff; stroke: #c7cdd8; stroke-width: 1.2; }
+      .muted { fill: #eef2f7; }
+      .divider { stroke: #e5e7eb; stroke-width: 1; }
+      .icon { fill: none; stroke: #ffffff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .darkIcon { fill: none; stroke: #4b5563; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1440" height="980"/>
+
+  <!-- Screen 1: layout principal -->
+  <g transform="translate(40 40)">
+    <text class="title" x="0" y="-12">TaskPage: layout principal</text>
+    <rect class="surface" x="0" y="0" width="620" height="390" rx="8" filter="url(#shadow)"/>
+    <rect class="appbar" x="0" y="0" width="620" height="64" rx="8"/>
+    <rect class="appbar" x="0" y="52" width="620" height="12"/>
+    <circle cx="34" cy="32" r="10" fill="#ffffff" opacity="0.95"/>
+    <path class="icon" d="M30 32h8M34 28v8"/>
+    <text class="primaryText" x="58" y="38">Gestor de Tareas ICE</text>
+    <rect class="muted" x="24" y="88" width="572" height="70" rx="8"/>
+    <text class="h2" x="44" y="116">Resumen</text>
+    <rect class="successChip" x="44" y="130" width="110" height="22" rx="11"/>
+    <text class="small" x="58" y="145">Pendientes 3</text>
+    <rect class="chip" x="166" y="130" width="120" height="22" rx="11"/>
+    <text class="small" x="180" y="145">Completadas 1</text>
+    <rect class="warnChip" x="298" y="130" width="94" height="22" rx="11"/>
+    <text class="small" x="312" y="145">Top ICE 336</text>
+
+    <text class="h2" x="24" y="198">Tareas priorizadas</text>
+    <g transform="translate(24 214)">
+      <rect class="surface" x="0" y="0" width="572" height="56" rx="8"/>
+      <rect class="primary" x="16" y="16" width="56" height="24" rx="12"/>
+      <text class="primaryText" x="29" y="33">336</text>
+      <text class="body" x="88" y="23">Preparar presentacion</text>
+      <text class="small" x="88" y="42">Impacto 8 - Confianza 7 - Facilidad 6</text>
+      <circle cx="502" cy="28" r="10" fill="#e6f4ea"/>
+      <path class="darkIcon" d="M497 28l3 3 7-8"/>
+      <circle cx="536" cy="28" r="10" fill="#eef2f7"/>
+      <path class="darkIcon" d="M532 32l8-8M532 24l8 8"/>
+    </g>
+    <g transform="translate(24 282)">
+      <rect class="surface" x="0" y="0" width="572" height="56" rx="8"/>
+      <rect class="chip" x="16" y="16" width="56" height="24" rx="12"/>
+      <text class="body" x="31" y="33">125</text>
+      <text class="body" x="88" y="23">Ordenar backlog del curso</text>
+      <text class="small" x="88" y="42">Pendiente - ICE medio</text>
+    </g>
+    <circle class="primary" cx="560" cy="338" r="28" filter="url(#shadow)"/>
+    <path class="icon" d="M550 338h20M560 328v20"/>
+  </g>
+
+  <!-- Screen 2: task form -->
+  <g transform="translate(720 40)">
+    <text class="title" x="0" y="-12">TaskFormDialog: crear o editar</text>
+    <rect class="surface" x="0" y="0" width="310" height="390" rx="8" filter="url(#shadow)"/>
+    <text class="h2" x="24" y="36">Nueva tarea</text>
+    <text class="label" x="24" y="76">Titulo</text>
+    <rect class="field" x="24" y="84" width="262" height="46" rx="4"/>
+    <text class="body" x="38" y="112">Preparar presentacion</text>
+    <text class="label" x="24" y="158">Descripcion</text>
+    <rect class="field" x="24" y="166" width="262" height="74" rx="4"/>
+    <text class="small" x="38" y="194">Crear diapositivas para explicar</text>
+    <text class="small" x="38" y="214">el proyecto final.</text>
+    <text class="label" x="24" y="267">Impacto</text>
+    <text class="label" x="118" y="267">Confianza</text>
+    <text class="label" x="218" y="267">Facilidad</text>
+    <rect class="field" x="24" y="276" width="64" height="40" rx="4"/>
+    <rect class="field" x="120" y="276" width="64" height="40" rx="4"/>
+    <rect class="field" x="222" y="276" width="64" height="40" rx="4"/>
+    <text class="body" x="51" y="301">8</text>
+    <text class="body" x="147" y="301">7</text>
+    <text class="body" x="249" y="301">6</text>
+    <rect class="chip" x="24" y="334" width="118" height="36" rx="18"/>
+    <text class="body" x="42" y="357">Sugerir ICE</text>
+    <rect class="primary" x="170" y="334" width="116" height="36" rx="18"/>
+    <text class="primaryText" x="194" y="357">Guardar</text>
+  </g>
+
+  <!-- Screen 3: AI suggestion panel -->
+  <g transform="translate(1080 40)">
+    <text class="title" x="0" y="-12">AiSuggestionPanel</text>
+    <rect class="surface" x="0" y="0" width="310" height="390" rx="8" filter="url(#shadow)"/>
+    <text class="h2" x="24" y="36">Sugerencia ICE por IA</text>
+    <text class="small" x="24" y="62">Revision antes de confirmar</text>
+    <rect class="muted" x="24" y="86" width="262" height="92" rx="8"/>
+    <circle cx="74" cy="132" r="32" fill="#e8f0fe"/>
+    <text class="title" x="52" y="140">336</text>
+    <text class="body" x="126" y="116">ICE sugerido</text>
+    <text class="small" x="126" y="138">Prioridad alta</text>
+    <text class="small" x="126" y="158">Editable por el usuario</text>
+    <g transform="translate(24 204)">
+      <rect class="field" x="0" y="0" width="72" height="56" rx="8"/>
+      <rect class="field" x="95" y="0" width="72" height="56" rx="8"/>
+      <rect class="field" x="190" y="0" width="72" height="56" rx="8"/>
+      <text class="label" x="14" y="20">Impacto</text>
+      <text class="body" x="31" y="43">8</text>
+      <text class="label" x="108" y="20">Confianza</text>
+      <text class="body" x="126" y="43">7</text>
+      <text class="label" x="207" y="20">Facilidad</text>
+      <text class="body" x="221" y="43">6</text>
+    </g>
+    <rect class="warnChip" x="24" y="286" width="262" height="46" rx="8"/>
+    <text class="small" x="40" y="305">Razon: tarea importante, clara y de</text>
+    <text class="small" x="40" y="322">dificultad media.</text>
+    <rect class="chip" x="24" y="348" width="100" height="28" rx="14"/>
+    <text class="small" x="43" y="366">Editar</text>
+    <rect class="primary" x="148" y="348" width="138" height="28" rx="14"/>
+    <text class="primaryText" x="174" y="367">Aceptar ICE</text>
+  </g>
+
+  <!-- Screen 4: confirmed summary -->
+  <g transform="translate(160 520)">
+    <text class="title" x="0" y="-12">TaskConfirmationSummary</text>
+    <rect class="surface" x="0" y="0" width="520" height="310" rx="8" filter="url(#shadow)"/>
+    <circle cx="64" cy="64" r="28" fill="#e6f4ea"/>
+    <path class="darkIcon" d="M52 64l8 8 18-20"/>
+    <text class="h2" x="108" y="58">Tarea creada</text>
+    <text class="body" x="108" y="82">Preparar presentacion</text>
+    <line class="divider" x1="24" y1="112" x2="496" y2="112"/>
+    <rect class="primary" x="24" y="138" width="90" height="46" rx="8"/>
+    <text class="primaryText" x="48" y="166">336</text>
+    <text class="body" x="136" y="154">Aparece arriba por ICE descendente.</text>
+    <text class="small" x="136" y="178">Impacto 8 - Confianza 7 - Facilidad 6</text>
+    <rect class="warnChip" x="24" y="210" width="472" height="42" rx="8"/>
+    <text class="small" x="42" y="236">La sugerencia IA queda visible como razon breve y los valores siguen editables.</text>
+    <rect class="chip" x="280" y="268" width="96" height="28" rx="14"/>
+    <text class="small" x="306" y="286">Editar</text>
+    <rect class="primary" x="392" y="268" width="104" height="28" rx="14"/>
+    <text class="primaryText" x="410" y="287">Ver lista</text>
+  </g>
+
+  <!-- Screen 5: loading and error states -->
+  <g transform="translate(760 520)">
+    <text class="title" x="0" y="-12">Estados Material UI</text>
+    <rect class="surface" x="0" y="0" width="500" height="310" rx="8" filter="url(#shadow)"/>
+    <text class="h2" x="24" y="38">Carga y errores</text>
+    <rect class="muted" x="24" y="66" width="452" height="70" rx="8"/>
+    <circle cx="58" cy="101" r="16" fill="none" stroke="#1976d2" stroke-width="4" stroke-dasharray="24 14"/>
+    <text class="body" x="92" y="98">Calculando sugerencia ICE...</text>
+    <text class="small" x="92" y="118">Solo se deshabilita la accion de IA.</text>
+    <rect x="24" y="164" width="452" height="70" rx="8" fill="#fce8e6" stroke="#f2b8b5"/>
+    <circle cx="58" cy="199" r="16" fill="#d93025"/>
+    <text class="primaryText" x="53" y="205">!</text>
+    <text class="body" x="92" y="196">No se pudo obtener la sugerencia.</text>
+    <text class="small" x="92" y="216">El usuario puede introducir ICE manualmente.</text>
+    <rect class="primary" x="348" y="258" width="128" height="30" rx="15"/>
+    <text class="primaryText" x="374" y="278">Reintentar</text>
+  </g>
+</svg>

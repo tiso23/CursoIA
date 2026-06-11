@@ -1,0 +1,44 @@
+flowchart TD
+    App[App] --> Theme[MaterialThemeProvider]
+    Theme --> Shell[AppShell]
+    Shell --> RouteHome["Ruta /"]
+
+    RouteHome --> TaskPage[TaskPage]
+    TaskPage --> TopBar[TopAppBar]
+    TaskPage --> MainContent[MainContent]
+    TaskPage --> CreateAction[FAB: Crear tarea]
+
+    MainContent --> Summary[TaskSummary]
+    MainContent --> TaskList[TaskList]
+    MainContent --> EmptyState[TaskEmptyState]
+
+    CreateAction --> CreateDialog[TaskFormDialog: crear tarea]
+    TaskList --> TaskItem[TaskItem]
+    TaskItem --> EditAction[Accion editar]
+    TaskItem --> CompleteAction[Accion completar]
+    TaskItem --> DeleteAction[Accion eliminar]
+
+    EditAction --> EditDialog[TaskFormDialog: editar tarea]
+    CreateDialog --> AiPanel[AiSuggestionPanel]
+    EditDialog --> AiPanel
+    AiPanel --> ApiLoading[Estado: calculando ICE]
+    AiPanel --> ApiError[Estado: error IA]
+    AiPanel --> ReviewSuggestion[Estado: revisar sugerencia]
+
+    CreateDialog --> Confirmed[TaskConfirmationSummary]
+    EditDialog --> Confirmed
+    Confirmed --> TaskPage
+    CompleteAction --> TaskPage
+    DeleteAction --> TaskPage
+
+    classDef root fill:#E8F0FE,stroke:#1A73E8,color:#174EA6;
+    classDef route fill:#F1F3F4,stroke:#5F6368,color:#202124;
+    classDef component fill:#E6F4EA,stroke:#34A853,color:#0D652D;
+    classDef state fill:#FFF8E1,stroke:#F9AB00,color:#7A4F00;
+    classDef danger fill:#FCE8E6,stroke:#D93025,color:#A50E0E;
+
+    class App,Theme,Shell root;
+    class RouteHome,TaskPage route;
+    class TopBar,MainContent,CreateAction,Summary,TaskList,EmptyState,TaskItem,CreateDialog,EditDialog,AiPanel,Confirmed component;
+    class ApiLoading,ReviewSuggestion state;
+    class ApiError,DeleteAction danger;

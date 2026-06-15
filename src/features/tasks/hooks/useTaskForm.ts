@@ -6,6 +6,7 @@ export type TaskFormValues = {
   title: string;
   description: string;
   iceScore: IceScore;
+  aiReason: string;
 };
 
 export type TaskFormErrors = {
@@ -19,6 +20,7 @@ const emptyFormValues: TaskFormValues = {
   title: '',
   description: '',
   iceScore: DEFAULT_ICE_SCORE,
+  aiReason: '',
 };
 
 function validateIceValue(value: number) {
@@ -56,6 +58,7 @@ function getFormValuesFromTask(task?: Task): TaskFormValues {
     title: task.title,
     description: task.description,
     iceScore: task.iceScore,
+    aiReason: task.aiReason ?? '',
   };
 }
 
@@ -85,6 +88,14 @@ export function useTaskForm() {
     }));
   }, []);
 
+  const applyIceSuggestion = useCallback((iceScore: IceScore, reason: string) => {
+    setValues((currentValues) => ({
+      ...currentValues,
+      iceScore,
+      aiReason: reason,
+    }));
+  }, []);
+
   const getTaskInput = useCallback((): TaskInput | null => {
     const formErrors = validateForm(values);
     setErrors(formErrors);
@@ -101,6 +112,7 @@ export function useTaskForm() {
         confidence: normalizeIceValue(values.iceScore.confidence),
         ease: normalizeIceValue(values.iceScore.ease),
       },
+      aiReason: values.aiReason,
     };
   }, [values]);
 
@@ -110,6 +122,7 @@ export function useTaskForm() {
     resetForm,
     setTextValue,
     setIceValue,
+    applyIceSuggestion,
     getTaskInput,
   };
 }

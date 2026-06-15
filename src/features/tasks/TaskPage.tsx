@@ -6,11 +6,13 @@ import { useTasks } from './hooks/useTasks';
 import { TaskFormDialog } from './components/TaskFormDialog';
 import { TaskList } from './components/TaskList';
 import { TaskSummary } from './components/TaskSummary';
+import { TaskConfirmationSummary } from './components/TaskConfirmationSummary';
 
 export function TaskPage() {
   const { createTask, deleteTask, summary, tasks, toggleTaskStatus, updateTask } = useTasks();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [confirmedTask, setConfirmedTask] = useState<Task | null>(null);
 
   const handleOpenCreate = () => {
     setEditingTask(null);
@@ -30,10 +32,22 @@ export function TaskPage() {
   const handleSaveTask = (taskInput: TaskInput) => {
     if (editingTask) {
       updateTask(editingTask.id, taskInput);
+      setConfirmedTask({
+        ...editingTask,
+        ...taskInput,
+        updatedAt: new Date().toISOString(),
+      });
       return;
     }
 
     createTask(taskInput);
+    setConfirmedTask({
+      id: 'preview',
+      status: 'pending',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      ...taskInput,
+    });
   };
 
   return (
@@ -50,6 +64,8 @@ export function TaskPage() {
           </Stack>
 
           <TaskSummary summary={summary} />
+
+          {confirmedTask ? <TaskConfirmationSummary task={confirmedTask} /> : null}
 
           <TaskList
             onDelete={deleteTask}

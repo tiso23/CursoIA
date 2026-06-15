@@ -5,3 +5,4 @@ export type {
   TaskStatus,
   TaskSummaryCounts,
 } from './taskTypes';
+export type { IceSuggestion } from './aiSuggestionTypes';

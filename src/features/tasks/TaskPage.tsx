@@ -1,14 +1,11 @@
-import AddIcon from '@mui/icons-material/Add';
-import {
-  Box,
-  Button,
-  Container,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Stack, Typography } from '@mui/material';
+import { TaskList } from './components/TaskList';
+import { TaskSummary } from './components/TaskSummary';
+import { useTasks } from './hooks/useTasks';
 
 export function TaskPage() {
+  const { deleteTask, summary, tasks, toggleTaskStatus } = useTasks();
+
   return (
     <Box component="main" sx={{ minHeight: '100vh', py: { xs: 3, md: 6 } }}>
       <Container maxWidth="md">
@@ -22,34 +19,12 @@ export function TaskPage() {
             </Typography>
           </Stack>
 
-          <Paper
-            elevation={0}
-            sx={{
-              border: 1,
-              borderColor: 'divider',
-              p: { xs: 2, md: 3 },
-            }}
-          >
-            <Stack
-              alignItems={{ xs: 'stretch', sm: 'center' }}
-              direction={{ xs: 'column', sm: 'row' }}
-              justifyContent="space-between"
-              spacing={2}
-            >
-              <Box>
-                <Typography component="h2" variant="h6">
-                  Pantalla inicial del gestor
-                </Typography>
-                <Typography color="text.secondary">
-                  La base esta lista para anadir tareas en los siguientes pasos.
-                </Typography>
-              </Box>
-
-              <Button disabled startIcon={<AddIcon />} variant="contained">
-                Nueva tarea
-              </Button>
-            </Stack>
-          </Paper>
+          <TaskSummary summary={summary} />
+          <TaskList
+            onDelete={deleteTask}
+            onToggleStatus={toggleTaskStatus}
+            tasks={tasks}
+          />
         </Stack>
       </Container>
     </Box>

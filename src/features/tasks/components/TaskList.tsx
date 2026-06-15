@@ -6,7 +6,7 @@ import { TaskItem } from './TaskItem';
 type TaskListProps = {
   tasks: Task[];
   onDelete: (taskId: string) => void;
-  onEdit?: (task: Task) => void;
+  onEdit: (task: Task) => void;
   onToggleStatus: (taskId: string) => void;
 };
 

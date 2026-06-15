@@ -17,7 +17,7 @@ import { IceScore } from './IceScore';
 type TaskItemProps = {
   task: Task;
   onDelete: (taskId: string) => void;
-  onEdit?: (task: Task) => void;
+  onEdit: (task: Task) => void;
   onToggleStatus: (taskId: string) => void;
 };
 
@@ -67,11 +67,7 @@ export function TaskItem({ task, onDelete, onEdit, onToggleStatus }: TaskItemPro
               </Tooltip>
 
               <Tooltip title="Editar">
-                <IconButton
-                  aria-label="Editar"
-                  disabled={!onEdit}
-                  onClick={() => onEdit?.(task)}
-                >
+                <IconButton aria-label="Editar" onClick={() => onEdit(task)}>
                   <EditIcon />
                 </IconButton>
               </Tooltip>

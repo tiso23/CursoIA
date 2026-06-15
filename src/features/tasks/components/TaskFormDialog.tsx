@@ -35,6 +35,7 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
     values,
   } = useTaskForm();
   const [suggestion, setSuggestion] = useState<IceSuggestion | null>(null);
+  const [isSuggestionAccepted, setIsSuggestionAccepted] = useState(false);
   const [suggestionError, setSuggestionError] = useState('');
   const [isSuggesting, setIsSuggesting] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -43,6 +44,7 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
     if (open) {
       resetForm(editingTask ?? undefined);
       setSuggestion(null);
+      setIsSuggestionAccepted(false);
       setSuggestionError('');
     }
   }, [editingTask, open, resetForm]);
@@ -71,6 +73,7 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
 
     setSuggestionError('');
     setSuggestion(null);
+    setIsSuggestionAccepted(false);
     setIsSuggesting(true);
 
     try {
@@ -84,7 +87,6 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
         return;
       }
 
-      applyIceSuggestion(iceSuggestion.iceScore, iceSuggestion.reason);
       setSuggestion(iceSuggestion);
     } catch {
       if (abortController.signal.aborted) {
@@ -98,6 +100,15 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
         setIsSuggesting(false);
       }
     }
+  };
+
+  const handleAcceptSuggestion = () => {
+    if (!suggestion) {
+      return;
+    }
+
+    applyIceSuggestion(suggestion.iceScore, suggestion.reason);
+    setIsSuggestionAccepted(true);
   };
 
   const handleSave = () => {
@@ -124,8 +135,10 @@ export function TaskFormDialog({ editingTask, onClose, onSave, open }: TaskFormD
           />
 
           <AiSuggestionPanel
+            accepted={isSuggestionAccepted}
             error={suggestionError}
             loading={isSuggesting}
+            onAccept={handleAcceptSuggestion}
             onSuggest={handleSuggest}
             suggestion={suggestion}
           />

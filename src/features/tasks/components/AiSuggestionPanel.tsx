@@ -1,19 +1,24 @@
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import { Alert, Stack, Typography } from '@mui/material';
+import { Alert, Button, Stack, Typography } from '@mui/material';
 import type { IceSuggestion } from '../types';
 import { LoadingButton } from '../../../shared/components/LoadingButton';
 import { ErrorMessage } from '../../../shared/components/ErrorMessage';
+import { IceScore } from './IceScore';
 
 type AiSuggestionPanelProps = {
+  accepted: boolean;
   error: string;
   loading: boolean;
   suggestion: IceSuggestion | null;
+  onAccept: () => void;
   onSuggest: () => void;
 };
 
 export function AiSuggestionPanel({
+  accepted,
   error,
   loading,
+  onAccept,
   onSuggest,
   suggestion,
 }: AiSuggestionPanelProps) {
@@ -32,10 +37,16 @@ export function AiSuggestionPanel({
 
       {suggestion ? (
         <Alert severity="info">
-          <Typography fontWeight={700} variant="body2">
-            Sugerencia aplicada
-          </Typography>
-          <Typography variant="body2">{suggestion.reason}</Typography>
+          <Stack spacing={1.5}>
+            <Typography fontWeight={700} variant="body2">
+              Revisa la sugerencia
+            </Typography>
+            <IceScore iceScore={suggestion.iceScore} />
+            <Typography variant="body2">{suggestion.reason}</Typography>
+            <Button disabled={accepted} onClick={onAccept} size="small" variant="contained">
+              {accepted ? 'Sugerencia aplicada' : 'Aplicar sugerencia'}
+            </Button>
+          </Stack>
         </Alert>
       ) : null}
     </Stack>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Execute Implementation Task"
+  short_description: "Run and commit the next documented task"
+  default_prompt: "Use $execute-implementation-task to detect, execute, verify, and commit the next task from docs/implementation-tasks.md."

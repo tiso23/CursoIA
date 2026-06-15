@@ -1,0 +1,15 @@
+interface:
+  display_name: "Create GitHub Commit"
+  short_description: "Approve, validate, commit, and push changes"
+  default_prompt: "Use $create-github-commit to prepare and push an approved commit for issue 12."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "github"
+      description: "GitHub MCP server for reading an optional issue before associating it with the commit."
+      transport: "streamable_http"
+      url: "https://api.githubcopilot.com/mcp/"
+
+policy:
+  allow_implicit_invocation: true

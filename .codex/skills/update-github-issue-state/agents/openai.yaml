@@ -1,0 +1,15 @@
+interface:
+  display_name: "Update GitHub Issue State"
+  short_description: "Move GitHub issues to doing or done"
+  default_prompt: "Use $update-github-issue-state to move GitHub issue 12 to doing."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "github"
+      description: "GitHub MCP server for reading issues, listing issue fields, and updating issue workflow fields."
+      transport: "streamable_http"
+      url: "https://api.githubcopilot.com/mcp/"
+
+policy:
+  allow_implicit_invocation: true

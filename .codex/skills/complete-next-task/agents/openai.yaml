@@ -1,0 +1,15 @@
+interface:
+  display_name: "Complete Next Task"
+  short_description: "Orchestrate one issue from doing to done"
+  default_prompt: "Use $complete-next-task to implement, verify, commit, push, and complete exactly one project task."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "github"
+      description: "GitHub MCP server used by the required issue workflow skills."
+      transport: "streamable_http"
+      url: "https://api.githubcopilot.com/mcp/"
+
+policy:
+  allow_implicit_invocation: true
